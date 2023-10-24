@@ -1,5 +1,5 @@
 
-namespace Photogram
+namespace FileStoregeHelper
 {
     public class Program
     {
@@ -13,12 +13,6 @@ namespace Photogram
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-
-            builder.Services.AddTransient<IPost, PostService>();
-            builder.Services.AddTransient<IUser, UserService>();
-
-            builder.Services.AddDbContext<PhotogramDB>(options =>
-                options.UseNpgsql(builder.Configuration.GetConnectionString("PostConnection")));
 
             var app = builder.Build();
 

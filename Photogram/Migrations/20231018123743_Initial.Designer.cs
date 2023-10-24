@@ -12,7 +12,7 @@ using Photogram.Data;
 namespace Photogram.Migrations
 {
     [DbContext(typeof(PhotogramDB))]
-    [Migration("20231017170037_Initial")]
+    [Migration("20231018123743_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
