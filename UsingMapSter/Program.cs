@@ -1,6 +1,14 @@
-﻿using UsingMapSter;
+﻿using UsingMapster;
 using Sharprompt;
 using UsingMapSter.DTos;
+using Microsoft.Extensions.DependencyInjection;
+using UsingMapSter;
+
+var services = new ServiceCollection();
+services.MapsterConfigRegistration();
+
+
+
 
 
 var service = new UserService();
@@ -17,6 +25,7 @@ while (true)
         var password = Prompt.Input<string>("Password Kiriting:");
         var username = Prompt.Input<string>("Username Kiriting:");
 
+
         var user = new UserForCreation()
         {
             FirstName = firstName,
@@ -26,19 +35,19 @@ while (true)
             UserName = username
         };
 
+
         service.Create(user);
     }
-    else if(choose == "Get users")
+    else if (choose == "Get users")
     {
         var users = service.GetUsers();
 
         foreach (var user in users)
         {
-            Console.WriteLine($"{user.LastName} {user.FirstName} {user.UserName} {user.CreatedAt}");
-
+            Console.WriteLine($"{user.Id} {user.FullName} {user.UserName} {user.CreatedAt}");
+            Prompt.Input<string>(" ");
         }
     }
 
     Console.Clear();
 }
-
